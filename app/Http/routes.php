@@ -11,11 +11,21 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('index','WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+Route::group(['prefix' => 'admin'], function()
+{
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+});
+
+Route::group(['prefix' => 'user'], function()
+{
+    Route::get('users', '');
+});
+
+Route::get('/', 'WelcomeController@laravel');
+//Route::get('home', 'HomeController@index');
+//Route::controllers([
+//	'auth' => 'Auth\AuthController',
+//	'password' => 'Auth\PasswordController',
+//]);
