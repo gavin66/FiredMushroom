@@ -17,15 +17,14 @@ Route::group(['prefix' => 'admin'], function()
 {
 
 });
-
 Route::group(['prefix' => 'user'], function()
 {
-    Route::get('users', '');
+
 });
 
 Route::get('/', 'WelcomeController@laravel');
-//Route::get('home', 'HomeController@index');
-//Route::controllers([
-//	'auth' => 'Auth\AuthController',
-//	'password' => 'Auth\PasswordController',
-//]);
+Route::get('home', 'HomeController@index');
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
