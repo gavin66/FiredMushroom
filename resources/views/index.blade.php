@@ -17,7 +17,7 @@
     <link href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <header class="navbar navbar-default" id="top" role="banner">
+    <div class="navbar navbar-inverse navbar-fixed-top" id="top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-expanded="false">
@@ -38,8 +38,18 @@
                 </ul>
             </div>
         </div>
-    </header>
+    </div>
 
+    <div class="jumbotron">
+        <div class="container">
+            <h1>联结世界</h1>
+            <p>给您一个真正的互联网</p>
+            <p>
+                <a class="btn btn-primary btn-lg" href="#" role="button">立即购买</a>
+                <a class="btn btn-primary btn-lg" href="#" role="button">免费试用</a>
+            </p>
+        </div>
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
