@@ -1,0 +1,42 @@
+body{
+    padding-top: 30px;
+}
+.masthead h1{
+    font-size: 60px;
+}
+.masthead h2{
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 1.25;
+}
+@media screen and (min-width: 768px){
+    .masthead{
+        padding: 90px 0 110px 0;
+    }
+    .masthead h1{
+        font-size: 90px;
+    }
+    .masthead h2{
+        font-size: 24px;
+    }
+}
+@media screen and (min-width: 992px){
+    .masthead h1{
+        font-size: 100px;
+    }
+    .masthead h2{
+        font-size: 30px;
+    }
+}
+.masthead-button-links{
+    margin-top: 30px;
+}
+
+.masthead p{
+    font-size: 40px;
+    font-weight: 200;
+    line-height: 1.25;
+}
+.masthead-bg-world{
+    background-image: url("../img/masthead-bg-world.jpg");
+}
