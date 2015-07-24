@@ -15,6 +15,7 @@
 
     <!-- Bootstrap css-->
     <link href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('/css/site.css') }}" rel="stylesheet">
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" id="top">
@@ -40,11 +41,11 @@
         </div>
     </div>
 
-    <div class="jumbotron">
+    <div class="jumbotron masthead text-center masthead-bg-world">
         <div class="container">
             <h1>联结世界</h1>
-            <p>给您一个真正的互联网</p>
-            <p>
+            <h2>给您一个真正的互联网</h2>
+            <p class="masthead-button-links">
                 <a class="btn btn-primary btn-lg" href="#" role="button">立即购买</a>
                 <a class="btn btn-primary btn-lg" href="#" role="button">免费试用</a>
             </p>
