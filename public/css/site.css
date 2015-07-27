@@ -37,6 +37,15 @@ body{
     font-weight: 200;
     line-height: 1.25;
 }
-.masthead-bg-world{
-    background-image: url("../img/masthead-bg-world.jpg");
-}
+
+/*.jumbotron::after{*/
+    /*content: '';*/
+    /*display: block;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*background: url(../img/test.png) repeat center center;*/
+    /*opacity: .4;*/
+/*}*/
