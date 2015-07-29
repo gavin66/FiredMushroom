@@ -18,7 +18,7 @@
     <link href="{{ asset('/css/site.css') }}" rel="stylesheet">
 </head>
 <body>
-    <header class="navbar navbar-inverse navbar-fixed-top" id="top">
+    <header class="navbar navbar-inverse navbar-fixed-top" id="top" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-expanded="false">
@@ -35,7 +35,7 @@
                     <li><a href="#">产品</a></li>
                     <li><a href="#">试用</a></li>
                     <li><a href="#">帮助</a></li>
-                    <li><a data-toggle="modal" data-target=".bs-example-modal-sm">登录</a></li>
+                    <li><a href="#" data-toggle="modal" data-target=".bs-example-modal-sm">登录</a></li>
                 </ul>
             </nav>
         </div>
@@ -60,7 +60,7 @@
                 <div class="caption">
                     <h3>真诚贴心服务</h3>
                     <p>
-                        安心保障，首次购买3   天内全额退款
+                        安心保障，首次购买3天内全额退款
                         新技术，新思维
                         新特权，心服务
                         快乐生活，放心消费
@@ -170,6 +170,11 @@
                     <h4 class="modal-title">登录</h4>
                 </div>
                 <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            div.
+                        </div>
+                    </div>
                     <p>用户名</p>
                 </div>
                 <div class="modal-footer">
