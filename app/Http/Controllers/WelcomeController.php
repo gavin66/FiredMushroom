@@ -28,13 +28,9 @@ class WelcomeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function laravel()
-	{
-		return view('welcome');
-	}
 
-    public function index()
+    public function home()
     {
-        return view('index');
+        return view('home');
     }
 }
