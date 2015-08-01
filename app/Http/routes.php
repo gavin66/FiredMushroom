@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/','WelcomeController@home');
+Route::get('/','HomeController@homePage');
 
 Route::group(['prefix' => 'admin'], function()
 {
@@ -22,8 +22,6 @@ Route::group(['prefix' => 'user'], function()
 
 });
 
-//Route::get('/', 'WelcomeController@laravel');
-Route::get('home', 'HomeController@index');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
