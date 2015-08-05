@@ -1,5 +1,10 @@
 <?php namespace App\Http\Controllers;
 
+
+
+use App\User;
+use Illuminate\Support\Facades\DB;
+
 class HomeController extends Controller {
 
 	/*
@@ -25,6 +30,7 @@ class HomeController extends Controller {
 	 */
     public function homePage()
     {
+		User::create(array('name'=>'Gavin','email'=>'em','password'=>time()));
         return view('homePage');
     }
 }
