@@ -30,7 +30,9 @@ class HomeController extends Controller {
 	 */
     public function homePage()
     {
-		User::create(array('name'=>'Gavin','email'=>'em','password'=>time()));
+//		User::create(array('name'=>'Gavin','email'=>'em','password'=>time()));
+//		$re = DB::select('select * from user');
+//		print_r($re);
         return view('homePage');
     }
 }

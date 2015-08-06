@@ -152,7 +152,7 @@
                 </div>
                 <div class="modal-footer">
                     <p class="text-left">可以使用以下方式登录</p>
-                    <img src="" alt="">
+                    <img src="" alt="   ">
                 </div>
             </div>
         </div>
