@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/','HomeController@homePage');
+//Route::get('/','HomeController@homePage');
+Route::get('/',['uses'=>'HomeController@homePage']);
 
 Route::group(['prefix' => 'admin'], function()
 {
