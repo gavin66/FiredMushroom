@@ -5,7 +5,7 @@
 use App\User;
 use Illuminate\Support\Facades\DB;
 
-class HomeController extends Controller {
+class homeController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -32,7 +32,13 @@ class HomeController extends Controller {
     {
 //		User::create(array('name'=>'Gavin','email'=>'em','password'=>time()));
 //		$re = DB::select('select * from user');
-//		print_r($re);
         return view('homePage');
     }
+
+	public function login(){
+//		User::
+
+	}
+
+
 }

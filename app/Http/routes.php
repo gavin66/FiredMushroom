@@ -14,16 +14,19 @@
 //Route::get('/','HomeController@homePage');
 Route::get('/',['uses'=>'HomeController@homePage']);
 
-Route::group(['prefix' => 'admin'], function()
-{
-
-});
 Route::group(['prefix' => 'user'], function()
 {
-
+	Route::get('/login',['uses'=>'']);
+	Route::get('/gavin',function(){return view('gavin');});
 });
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+//Route::group(['prefix' => 'user'], function()
+//{
+//
+//});
+//
+//
+//Route::controllers([
+//	'auth' => 'Auth\AuthController',
+//	'password' => 'Auth\PasswordController',
+//]);
