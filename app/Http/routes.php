@@ -11,12 +11,10 @@
 |
 */
 
-//Route::get('/','HomeController@homePage');
 Route::get('/',['uses'=>'HomeController@homePage']);
-
 Route::group(['prefix' => 'user'], function()
 {
-	Route::get('/login',['uses'=>'']);
+	Route::get('/login',['uses'=>'HomeController@homePage']);
 	Route::get('/gavin',function(){return view('gavin');});
 });
 

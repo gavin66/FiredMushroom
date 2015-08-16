@@ -5,17 +5,17 @@
 use App\User;
 use Illuminate\Support\Facades\DB;
 
-class homeController extends Controller {
+class HomeController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
-	| Ö÷Ò³Á¬½ÓµÄËùÓÐ¿ØÖÆÆ÷
+	| ä¸»é¡µè¿žæŽ¥çš„æ‰€æœ‰æŽ§åˆ¶å™¨
 	|--------------------------------------------------------------------------
 	*/
 
 	/**
-	 * ÐÂ½¨¿ØÖÆÆ÷ÊµÀý
-	 * ÖÐ¼ä¼þ
+	 * æ–°å»ºæŽ§åˆ¶å™¨å®žä¾‹
+	 * ä¸­é—´ä»¶
 	 * @return void
 	 */
 	public function __construct()
@@ -24,16 +24,16 @@ class homeController extends Controller {
 	}
 
 	/**
-	 * Ö÷Ò³¿ØÖÆÆ÷
+	 * ä¸»é¡µæŽ§åˆ¶å™¨
 	 *
 	 * @return Response
 	 */
-    public function homePage()
-    {
+	public function homePage()
+	{
 //		User::create(array('name'=>'Gavin','email'=>'em','password'=>time()));
 //		$re = DB::select('select * from user');
-        return view('homePage');
-    }
+		return view('homePage');
+	}
 
 	public function login(){
 //		User::
