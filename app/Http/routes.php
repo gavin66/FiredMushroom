@@ -11,19 +11,20 @@
 |
 */
 
-Route::get('/',['uses'=>'HomeController@homePage']);
-Route::group(['prefix' => 'user'], function()
-{
-	Route::get('/login',['uses'=>'HomeController@homePage']);
-	Route::get('/gavin',function(){return view('gavin');});
-});
+Route::get('/',function(){return view('homePage');});
 
-//Route::group(['prefix' => 'user'], function()
-//{
+Route::get('/common/login',['uses'=>'CommonController@login']);
+
+
+//Route::group(['namespace'=>'common'],function(){
 //
 //});
-//
-//
+//Route::group(['prefix' => 'user'], function()
+//{
+//	Route::get('/login',['uses'=>'UserController@login']);
+//	Route::get('/gavin',function(){return view('gavin');});
+//});
+
 //Route::controllers([
 //	'auth' => 'Auth\AuthController',
 //	'password' => 'Auth\PasswordController',
