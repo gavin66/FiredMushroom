@@ -53,9 +53,14 @@
         </div>
     </footer>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- jquery 使用bootstrap等其他框架,插件必须导入的-->
     <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- bootstrap的主要js-->
     <script src="//apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- angular的主要js-->
+    <script src="//apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+    @section('js')
+
+    @show
 </body>
 </html>

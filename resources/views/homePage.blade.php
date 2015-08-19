@@ -129,15 +129,18 @@
                     <h4 class="modal-title">登录</h4>
                 </div>
                 <div class="modal-body">
+                    <form>
                     <div class="sms">
                         <p class="text-right"><span class="glyphicon glyphicon-phone"></span><a href="">短信快捷登录</a></p>
                     </div>
+
                     <div class="form-group">
                         <input type="email" class="form-control input-lg" id="exampleInputEmail1" placeholder="手机/邮箱/用户名">
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control input-lg" id="exampleInputPassword1" placeholder="密码">
                     </div>
+
                     <div class="checkbox">
                         <label>
                             <input type="checkbox"> 下次自动登录
@@ -148,14 +151,23 @@
                     <div>
                         <p class="text-right"><a href="">立即注册</a></p>
                     </div>
-
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <p class="text-left">可以使用以下方式登录</p>
-                    <img src="" alt="   ">
+                    <img src="" alt="">
                 </div>
             </div>
         </div>
     </div>
 @stop
 
+@section('js')
+    <script type="text/javascript">
+        $(function(){
+
+
+
+        });
+    </script>
+@stop
