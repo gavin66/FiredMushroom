@@ -147,7 +147,7 @@
                         </label>
                         <a class="pull-right" href="">忘记密码?</a>
                     </div>
-                    <button type="button" class="btn btn-primary btn-block btn-lg">登录</button>
+                    <button type="button" id="login_commit" class="btn btn-primary btn-block btn-lg">登录</button>
                     <div>
                         <p class="text-right"><a href="">立即注册</a></p>
                     </div>
@@ -165,7 +165,9 @@
 @section('js')
     <script type="text/javascript">
         $(function(){
+            $('#login_commit').click(function(){
 
+            });
 
 
         });

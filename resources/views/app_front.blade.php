@@ -58,7 +58,7 @@
     <!-- bootstrap的主要js-->
     <script src="//apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <!-- angular的主要js-->
-    <script src="//apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+    <!--<script src="//apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script> -->
     @section('js')
 
     @show
