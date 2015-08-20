@@ -129,28 +129,27 @@
                     <h4 class="modal-title">登录</h4>
                 </div>
                 <div class="modal-body">
-                    <form>
-                    <div class="sms">
-                        <p class="text-right"><span class="glyphicon glyphicon-phone"></span><a href="">短信快捷登录</a></p>
-                    </div>
+                    <form id="form-login" action="javascript:alert(1);" method="post">
+                        <div class="sms">
+                            <p class="text-right"><span class="glyphicon glyphicon-phone"></span><a href="">短信快捷登录</a></p>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control input-lg" name="email" placeholder="手机/邮箱/用户名">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control input-lg" name="password" placeholder="密码">
+                        </div>
 
-                    <div class="form-group">
-                        <input type="email" class="form-control input-lg" id="exampleInputEmail1" placeholder="手机/邮箱/用户名">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control input-lg" id="exampleInputPassword1" placeholder="密码">
-                    </div>
-
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> 下次自动登录
-                        </label>
-                        <a class="pull-right" href="">忘记密码?</a>
-                    </div>
-                    <button type="button" id="login_commit" class="btn btn-primary btn-block btn-lg">登录</button>
-                    <div>
-                        <p class="text-right"><a href="">立即注册</a></p>
-                    </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> 下次自动登录
+                            </label>
+                            <a class="pull-right" href="">忘记密码?</a>
+                        </div>
+                        <button type="button" id="login_commit" class="btn btn-primary btn-block btn-lg">登录</button>
+                        <div>
+                            <p class="text-right"><a href="">立即注册</a></p>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -163,13 +162,70 @@
 @stop
 
 @section('js')
+    <script src="//cdn.bootcss.com/jquery-validate/1.14.0/jquery.validate.min.js"></script>
     <script type="text/javascript">
         $(function(){
-            $('#login_commit').click(function(){
+            var MyValidator = function() {
+                var handleSubmit = function() {
+                    $('#form-login').validate({
+                        debug:true,
+                        errorElement : 'span',
+                        errorClass : 'help-block',
+                        focusInvalid : false,
+                        rules : {
+                            email : {
+                                required : true
+                            },
+                            password : {
+                                required : true
+                            }
+                        },
+                        messages : {
+                            email : {
+                                required : "Username is required."
+                            },
+                            password : {
+                                required : "Password is required."
+                            }
+                        },
 
-            });
+                        highlight : function(element) {
+                            $(element).closest('.form-group').addClass('has-error');
+                        },
 
+                        success : function(label) {
+                            label.closest('.form-group').removeClass('has-error');
+                            label.remove();
+                        },
 
+                        errorPlacement : function(error, element) {
+                            element.parent('div').append(error);
+                        },
+
+                        submitHandler : function(form) {
+                            form.submit();
+                        }
+                    });
+
+                    $('#form-login input').keypress(function(e) {
+                        if (e.which == 13) {
+                            if ($('#form-login').validate().form()) {
+                                $('#form-login').submit();
+                            }
+                            return false;
+                        }
+                    });
+                }
+                return {
+                    init : function() {
+                        handleSubmit();
+                    }
+                };
+
+            }();
+
+            MyValidator.init();
         });
+
     </script>
 @stop
