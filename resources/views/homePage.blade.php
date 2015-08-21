@@ -142,7 +142,7 @@
 
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox"> 下次自动登录
+                                <input type="checkbox" name="autoLogin"> 下次自动登录
                             </label>
                             <a class="pull-right" href="">忘记密码?</a>
                         </div>
@@ -165,7 +165,8 @@
     <script src="//cdn.bootcss.com/jquery-validate/1.14.0/jquery.validate.min.js"></script>
     <script type="text/javascript">
         $(function(){
-            var MyValidator = function() {
+            //表单验证
+            var loginValidator = function() {
                 var handleSubmit = function() {
                     $('#form-login').validate({
                         debug:true,
@@ -188,32 +189,35 @@
                                 required : "Password is required."
                             }
                         },
-
                         highlight : function(element) {
                             $(element).closest('.form-group').addClass('has-error');
                         },
-
-                        success : function(label) {
-                            label.closest('.form-group').removeClass('has-error');
-                            label.remove();
+                        success : function(element) {
+                            $(element).closest('.form-group').removeClass('has-error');
+                            $(element).remove();
                         },
-
                         errorPlacement : function(error, element) {
                             element.parent('div').append(error);
                         },
-
                         submitHandler : function(form) {
-                            form.submit();
+//                            $(form).submit();
+//                            $('#form-login input').each(function(index,element){
+//                                element.attr('name')
+//                            });
                         }
                     });
 
-                    $('#form-login input').keypress(function(e) {
-                        if (e.which == 13) {
+                    $('#form-login input').keypress(function(event) {
+                        if (event.which == 13) {
                             if ($('#form-login').validate().form()) {
                                 $('#form-login').submit();
                             }
                             return false;
                         }
+                    });
+
+                    $('#login_commit').click(function(){
+                        $('#form-login').submit();
                     });
                 }
                 return {
@@ -224,7 +228,8 @@
 
             }();
 
-            MyValidator.init();
+            //初始化表单验证
+            loginValidator.init();
         });
 
     </script>
