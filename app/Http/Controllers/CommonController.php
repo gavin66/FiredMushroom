@@ -8,17 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class CommonController extends Controller {
 
-	/*
-	|--------------------------------------------------------------------------
-	| 主页连接的所有控制器
-	|--------------------------------------------------------------------------
-	*/
-
-	/**
-	 * 新建控制器实例
-	 * 中间件
-	 * @return void
-	 */
 	public function __construct(){
 
 	}
@@ -26,6 +15,15 @@ class CommonController extends Controller {
 	public function login(Request $request){
 		$params = $request->all();
 		print_r($params);
+	}
+
+	public function post(Request $request){
+		if($request->isMethod('post')){
+			print_r('im gavin success');
+		}else{
+			print_r('sssssss');
+		}
+
 	}
 
 }

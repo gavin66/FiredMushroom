@@ -13,7 +13,9 @@
 
 Route::get('/',function(){return view('homePage');});
 
-Route::get('/common/login',['uses'=>'CommonController@login']);
+Route::get('common/login',['uses'=>'CommonController@login']);
+
+Route::post('gavin/post',['uses'=>'CommonController@post']);
 
 
 //Route::group(['namespace'=>'common'],function(){

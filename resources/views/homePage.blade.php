@@ -129,7 +129,7 @@
                     <h4 class="modal-title">登录</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="form-login" action="javascript:alert(1);" method="post">
+                    <form id="form-login">
                         <div class="sms">
                             <p class="text-right"><span class="glyphicon glyphicon-phone"></span><a href="">短信快捷登录</a></p>
                         </div>
@@ -163,74 +163,85 @@
 
 @section('js')
     <script src="//cdn.bootcss.com/jquery-validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="{{ asset('/js/spare/messages_zh.min.js') }}"></script>
     <script type="text/javascript">
         $(function(){
-            //表单验证
-            var loginValidator = function() {
-                var handleSubmit = function() {
-                    $('#form-login').validate({
-                        debug:true,
-                        errorElement : 'span',
-                        errorClass : 'help-block',
-                        focusInvalid : false,
-                        rules : {
-                            email : {
-                                required : true
-                            },
-                            password : {
-                                required : true
-                            }
+            //初始化表单验证
+            loginValidator.init();
+        });
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        //表单验证
+        var loginValidator = function() {
+            var handleSubmit = function() {
+                $('#form-login').validate({
+//                    debug:true,
+                    errorElement : 'span',
+                    errorClass : 'help-block',
+                    focusInvalid : false,
+                    rules : {
+                        email : {
+                            required : true
                         },
-                        messages : {
-                            email : {
-                                required : "Username is required."
-                            },
-                            password : {
-                                required : "Password is required."
-                            }
-                        },
-                        highlight : function(element) {
-                            $(element).closest('.form-group').addClass('has-error');
-                        },
-                        success : function(element) {
-                            $(element).closest('.form-group').removeClass('has-error');
-                            $(element).remove();
-                        },
-                        errorPlacement : function(error, element) {
-                            element.parent('div').append(error);
-                        },
-                        submitHandler : function(form) {
+                        password : {
+                            required : true
+                        }
+                    },
+//                        messages : {
+//                            email : {
+//                                required : "Username is required."
+//                            },
+//                            password : {
+//                                required : "Password is required."
+//                            }
+//                        },
+                    highlight : function(element) {
+                        $(element).closest('.form-group').addClass('has-error');
+                    },
+                    success : function(element) {
+                        $(element).closest('.form-group').removeClass('has-error');
+                        $(element).remove();
+                    },
+                    errorPlacement : function(error, element) {
+                        element.parent('div').append(error);
+                    },
+                    submitHandler : function(form) {
 //                            $(form).submit();
 //                            $('#form-login input').each(function(index,element){
 //                                element.attr('name')
 //                            });
-                        }
-                    });
-
-                    $('#form-login input').keypress(function(event) {
-                        if (event.which == 13) {
-                            if ($('#form-login').validate().form()) {
-                                $('#form-login').submit();
-                            }
-                            return false;
-                        }
-                    });
-
-                    $('#login_commit').click(function(){
-                        $('#form-login').submit();
-                    });
-                }
-                return {
-                    init : function() {
-                        handleSubmit();
+                        $.post("gavin/post",{},function(data){
+                            alert(data);
+                        },"text");
                     }
-                };
+                });
 
-            }();
+                $('#form-login input').keypress(function(event) {
+                    if (event.which == 13) {
+                        if ($('#form-login').validate().form()) {
+                            $('#form-login').submit();
+                        }
+                        return false;
+                    }
+                });
 
-            //初始化表单验证
-            loginValidator.init();
-        });
+                $('#login_commit').click(function(){
+                    $('#form-login').submit();
+                });
+            }
+            return {
+                init : function() {
+                    handleSubmit();
+                }
+            };
+
+        }();
+
 
     </script>
 @stop
