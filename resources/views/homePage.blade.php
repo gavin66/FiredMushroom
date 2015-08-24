@@ -170,17 +170,11 @@
             loginValidator.init();
         });
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
         //表单验证
         var loginValidator = function() {
             var handleSubmit = function() {
                 $('#form-login').validate({
-//                    debug:true,
+                    debug:true,
                     errorElement : 'span',
                     errorClass : 'help-block',
                     focusInvalid : false,
@@ -211,13 +205,12 @@
                         element.parent('div').append(error);
                     },
                     submitHandler : function(form) {
-//                            $(form).submit();
-//                            $('#form-login input').each(function(index,element){
-//                                element.attr('name')
-//                            });
-                        $.post("gavin/post",{},function(data){
-                            alert(data);
-                        },"text");
+                        alert(1);
+                        console.log($('#form-login').getFormParams());
+
+//                        $.post("gavin/post",{},function(data){
+//
+//                        },"text");
                     }
                 });
 
