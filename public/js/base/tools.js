@@ -1,7 +1,7 @@
 /**
  * Created by Gavin on 2015/8/24.
  */
-(function($){
+;(function($){
     var methods = {
         getFormParams: function(){
             var names=this.find("input,textarea");
@@ -18,7 +18,7 @@
         }
     };
 
-    $.fn.Gtools = function(method){
+    $.fn.gTools = function(method){
         if(methods[method]){
             return methods[method].apply(this,Array.prototype.slice.call(arguments,1));
         }else if(typeof method === 'object' || !method){

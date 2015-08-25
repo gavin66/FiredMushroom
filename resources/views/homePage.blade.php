@@ -205,9 +205,7 @@
                         element.parent('div').append(error);
                     },
                     submitHandler : function(form) {
-                        alert(1);
-                        console.log($('#form-login').getFormParams());
-
+                        console.log($('#form-login').gTools('getFormParams'));
 //                        $.post("gavin/post",{},function(data){
 //
 //                        },"text");
