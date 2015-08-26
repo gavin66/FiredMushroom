@@ -12,18 +12,4 @@ class CommonController extends Controller {
 
 	}
 
-	public function login(Request $request){
-		$params = $request->all();
-		print_r($params);
-	}
-
-	public function post(Request $request){
-		if($request->isMethod('post')){
-			print_r('im gavin success');
-		}else{
-			print_r('sssssss');
-		}
-
-	}
-
 }

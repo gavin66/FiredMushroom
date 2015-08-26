@@ -139,7 +139,6 @@
                         <div class="form-group">
                             <input type="password" class="form-control input-lg" name="password" placeholder="密码">
                         </div>
-
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" name="autoLogin"> 下次自动登录
@@ -205,10 +204,9 @@
                         element.parent('div').append(error);
                     },
                     submitHandler : function(form) {
-                        console.log($('#form-login').gTools('getFormParams'));
-//                        $.post("gavin/post",{},function(data){
-//
-//                        },"text");
+                        $.post("user/loginAuth",gApp.getFormParams($('#form-login')),function(data){
+
+                        },"text");
                     }
                 });
 

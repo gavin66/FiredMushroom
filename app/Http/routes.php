@@ -13,21 +13,6 @@
 
 Route::get('/',function(){return view('homePage');});
 
-Route::get('common/login',['uses'=>'CommonController@login']);
-
-Route::post('gavin/post',['uses'=>'CommonController@post']);
-
-
-//Route::group(['namespace'=>'common'],function(){
-//
-//});
-//Route::group(['prefix' => 'user'], function()
-//{
-//	Route::get('/login',['uses'=>'UserController@login']);
-//	Route::get('/gavin',function(){return view('gavin');});
-//});
-
-//Route::controllers([
-//	'auth' => 'Auth\AuthController',
-//	'password' => 'Auth\PasswordController',
-//]);
+Route::group(['prefix'=>'user'],function(){
+    Route::post('loginAuth',['uses'=>'UserController@loginAuth']);
+});
