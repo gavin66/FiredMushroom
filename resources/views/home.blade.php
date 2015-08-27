@@ -4,7 +4,7 @@
     <div class="jumbotron masthead text-center">
         <div class="container">
             <h1>联结世界</h1>
-            <h2>给您一个真正的互联网</h2>
+            <h2>给您一个真正的互联网|{{Cookie::get('is_login')}}|</h2>
             <p class="masthead-button-links">
                 <a class="btn btn-primary btn-lg" href="#" role="button">立即购买</a>
                 <a class="btn btn-primary btn-lg" href="#" role="button">免费试用</a>

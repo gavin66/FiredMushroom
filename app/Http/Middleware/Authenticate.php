@@ -32,8 +32,6 @@ class Authenticate {
 	 */
 	public function handle($request, Closure $next)
 	{
-		//throw new \Exception('111111111111');
-		//print_r('11111111111');
 		if ($this->auth->guest())
 		{
 			if ($request->ajax())
@@ -42,7 +40,8 @@ class Authenticate {
 			}
 			else
 			{
-				return redirect()->guest('auth/login');
+//				return redirect()->guest('auth/login');
+				return response()->view('home')->withCookie(cookie('is_login','坎坎坷坷'));
 			}
 		}
 

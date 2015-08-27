@@ -11,8 +11,8 @@
 |
 */
 
-//Route::get('/','HomeController@index');
-Route::get('/home',function(){return view('home');});
+Route::get('/','HomeController@index');
+//Route::get('/home',function(){return view('home');});
 
 //Route::group(['prefix'=>'user'],function(){
 //    Route::post('loginAuth',['uses'=>'UserController@loginAuth']);
