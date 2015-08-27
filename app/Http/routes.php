@@ -11,8 +11,18 @@
 |
 */
 
-Route::get('/',function(){return view('homePage');});
+//Route::get('/','HomeController@index');
+Route::get('/home',function(){return view('home');});
 
-Route::group(['prefix'=>'user'],function(){
-    Route::post('loginAuth',['uses'=>'UserController@loginAuth']);
-});
+//Route::group(['prefix'=>'user'],function(){
+//    Route::post('loginAuth',['uses'=>'UserController@loginAuth']);
+//});
+
+//Route::get('/', 'WelcomeController@index');
+//
+//Route::get('home', 'HomeController@index');
+//
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);

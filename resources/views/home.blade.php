@@ -1,4 +1,4 @@
-@extends('app_front')
+@extends('app')
 
 @section('content')
     <div class="jumbotron masthead text-center">

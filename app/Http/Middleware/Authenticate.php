@@ -32,6 +32,8 @@ class Authenticate {
 	 */
 	public function handle($request, Closure $next)
 	{
+		//throw new \Exception('111111111111');
+		//print_r('11111111111');
 		if ($this->auth->guest())
 		{
 			if ($request->ajax())
