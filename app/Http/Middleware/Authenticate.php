@@ -41,7 +41,7 @@ class Authenticate {
 			else
 			{
 //				return redirect()->guest('auth/login');
-				return response()->view('home')->withCookie(cookie('is_login','坎坎坷坷'));
+				return response()->view('home');
 			}
 		}
 

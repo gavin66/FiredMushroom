@@ -141,7 +141,7 @@
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="autoLogin"> 下次自动登录
+                                <input type="checkbox" name="remember"> 下次自动登录
                             </label>
                             <a class="pull-right" href="">忘记密码?</a>
                         </div>
@@ -204,8 +204,8 @@
                         element.parent('div').append(error);
                     },
                     submitHandler : function(form) {
-                        $.post("user/loginAuth",gApp.getFormParams($('#form-login')),function(data){
-
+                        $.post("auth/login",gApp.getFormParams($('#form-login')),function(data){
+                            alert(data);
                         },"text");
                     }
                 });

@@ -26,3 +26,9 @@ Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
+
+//Route::post('auth/login','Auth\AuthController@postLogin');
+//Route::get('auth/login','Auth\AuthController@getLogin');
+
+//Route::post('auth/login',function(){return '111111';});
+//Route::get('auth/login',function(){return '111111';});

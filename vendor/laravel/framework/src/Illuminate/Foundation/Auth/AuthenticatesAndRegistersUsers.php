@@ -59,7 +59,6 @@ trait AuthenticatesAndRegistersUsers {
 	 */
 	public function getLogin()
 	{
-
 		return view('auth.login');
 	}
 
