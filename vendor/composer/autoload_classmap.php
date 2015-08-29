@@ -15,7 +15,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\PasswordController' => $baseDir . '/app/Http/Controllers/Auth/PasswordController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
-    'App\\Http\\Controllers\\L_WelcomeController' => $baseDir . '/app/Http/Controllers/L_WelcomeController.php',
+    'App\\Http\\Controllers\\L_WelcomeController' => $baseDir . '/app/Http/Controllers/WelcomeController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\RedirectIfAuthenticated' => $baseDir . '/app/Http/Middleware/RedirectIfAuthenticated.php',
