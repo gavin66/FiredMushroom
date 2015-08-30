@@ -4,7 +4,7 @@
     <div class="jumbotron masthead text-center">
         <div class="container">
             <h1>联结世界</h1>
-            <h2>给您一个真正的互联网|{{Cookie::get('is_login')}}|</h2>
+            <h2>给您一个真正的互联网</h2>
             <p class="masthead-button-links">
                 <a class="btn btn-primary btn-lg" href="#" role="button">立即购买</a>
                 <a class="btn btn-primary btn-lg" href="#" role="button">免费试用</a>
@@ -130,6 +130,7 @@
                 </div>
                 <div class="modal-body">
                     <form id="form-login">
+
                         <div class="sms">
                             <p class="text-right"><span class="glyphicon glyphicon-phone"></span><a href="">短信快捷登录</a></p>
                         </div>
@@ -207,6 +208,7 @@
                         $.post("auth/login",gApp.getFormParams($('#form-login')),function(data){
                             alert(data);
                         },"text");
+//                        form.submit();
                     }
                 });
 
