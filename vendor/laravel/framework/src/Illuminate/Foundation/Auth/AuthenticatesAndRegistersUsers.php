@@ -59,8 +59,7 @@ trait AuthenticatesAndRegistersUsers {
 	 */
 	public function getLogin()
 	{
-//		return view('auth.login');
-		return 'getLogin';
+		return view('auth.login');
 	}
 
 	/**
@@ -71,7 +70,6 @@ trait AuthenticatesAndRegistersUsers {
 	 */
 	public function postLogin(Request $request)
 	{
-//		return 'postLogin';
 		$this->validate($request, [
 			'email' => 'required|email', 'password' => 'required',
 		]);

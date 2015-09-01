@@ -38,7 +38,7 @@
                     <li><a href="#">产品</a></li>
                     <li><a href="#">试用</a></li>
                     <li><a href="#">帮助</a></li>
-                    <li><a href="#" data-toggle="modal" data-target=".bs-example-modal-sm">登录</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#modal-login">登录</a></li>
                 </ul>
             </nav>
         </div>

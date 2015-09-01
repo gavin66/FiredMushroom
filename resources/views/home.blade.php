@@ -12,6 +12,17 @@
         </div>
     </div>
 
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="container nav-service">
         <h2>优质服务</h2>
         <div class="row">
@@ -121,7 +132,7 @@
 
     </div>
 
-    <div class="modal fade bs-example-modal-sm" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal fade bs-example-modal-sm" id="modal-login" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
@@ -130,7 +141,6 @@
                 </div>
                 <div class="modal-body">
                     <form id="form-login">
-
                         <div class="sms">
                             <p class="text-right"><span class="glyphicon glyphicon-phone"></span><a href="">短信快捷登录</a></p>
                         </div>
@@ -148,7 +158,7 @@
                         </div>
                         <button type="button" id="login_commit" class="btn btn-primary btn-block btn-lg">登录</button>
                         <div>
-                            <p class="text-right"><a href="">立即注册</a></p>
+                            <p class="text-right"><span id="go-dialog-register">立即注册</span></p>
                         </div>
                     </form>
                 </div>
@@ -159,6 +169,45 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade bs-example-modal-sm" id="modal-register" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">注册</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="form-register">
+                        <div class="sms">
+                            <p class="text-right"><span class="glyphicon glyphicon-phone"></span><a href="">短信快捷登录</a></p>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control input-lg" name="email" placeholder="手机/邮箱/用户名">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control input-lg" name="password" placeholder="密码">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="remember"> 下次自动登录
+                            </label>
+                            <a class="pull-right" href="">忘记密码?</a>
+                        </div>
+                        <button type="button" id="login_commit" class="btn btn-primary btn-block btn-lg">登录</button>
+                        <div>
+                            <p class="text-right"><span id="go-dialog-login">返回登录</span></p>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p class="text-left">可以使用以下方式登录</p>
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
 @stop
 
 @section('js')
@@ -167,13 +216,13 @@
     <script type="text/javascript">
         $(function(){
             //初始化表单验证
-            loginValidator.init();
+            validator.init();
         });
 
         //表单验证
-        var loginValidator = function() {
+        var validator = function() {
             var handleSubmit = function() {
-                $('#form-login').validate({
+                $('#form-login,#form-register').validate({
                     debug:true,
                     errorElement : 'span',
                     errorClass : 'help-block',
@@ -205,9 +254,10 @@
                         element.parent('div').append(error);
                     },
                     submitHandler : function(form) {
-                        $.post("auth/login",gApp.getFormParams($('#form-login')),function(data){
-                            alert(data);
-                        },"text");
+                        alert($(form).attr('id'));
+//                        $.post("auth/ajax-login",gApp.getFormParams($('#form-login')),function(data){
+//                            alert(data);
+//                        },"text");
 //                        form.submit();
                     }
                 });
@@ -224,6 +274,16 @@
                 $('#login_commit').click(function(){
                     $('#form-login').submit();
                 });
+
+                $('#go-dialog-register').click(function(){
+                    $('#modal-login').modal('hide');
+                    $('#modal-register').modal('show');
+                });
+                $('#go-dialog-login').click(function(){
+                    $('#modal-register').modal('hide');
+                    $('#modal-login').modal('show');
+                });
+
             }
             return {
                 init : function() {

@@ -1,12 +1,14 @@
 <?php namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class AuthController extends Controller {
-
 	/*
 	|--------------------------------------------------------------------------
 	| Registration & Login Controller
@@ -33,6 +35,37 @@ class AuthController extends Controller {
 		$this->registrar = $registrar;
 
 		$this->middleware('guest', ['except' => 'getLogout']);
+	}
+
+	public function postAjaxLogin(Request $request){
+		if(!$request->ajax()){
+			return 'this is not post method.';
+		}
+
+		$this->validate($request, [
+			'email' => 'required|email', 'password' => 'required',
+		]);
+
+		$credentials = $request->only('email', 'password');
+
+		if ($this->auth->attempt($credentials, $request->has('remember')))
+		{
+//			return redirect()->intended($this->redirectPath());
+			return response()->json(['is_success'=>'1']);
+		}
+
+//		return redirect($this->loginPath())
+//			->withInput($request->only('email', 'remember'))
+//			->withErrors([
+//				'email' => $this->getFailedLoginMessage(),
+//			]);
+
+		return response()->json(['is_success'=>'0','error'=>$this->getFailedLoginMessage()]);
+	}
+
+	protected function getFailedLoginMessage()
+	{
+		return '用户名与密码不匹配.';
 	}
 
 }

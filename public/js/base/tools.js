@@ -41,7 +41,7 @@ var gApp = {
             if(this.in_array(type,["password","email","text"])){
                 params[names[i].name] = names[i].value;
             }else if(this.in_array(type,["checkbox"])){
-                params[names[i].name] = $(names[i]).is('input:checkbox:checked')?'1':'0';
+                params[names[i].name] = $(names[i]).is('input:checkbox:checked')?'1':'';
             }
         }
         return params;
