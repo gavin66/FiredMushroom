@@ -37,6 +37,12 @@ class AuthController extends Controller {
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
+	/**
+	 * ajax请求的登录
+	 *
+	 * @param \Illuminate\Http\Request $request
+	 * @return string json
+	 */
 	public function postAjaxLogin(Request $request){
 		if(!$request->ajax()){
 			return 'this is not post method.';
@@ -50,17 +56,31 @@ class AuthController extends Controller {
 
 		if ($this->auth->attempt($credentials, $request->has('remember')))
 		{
-//			return redirect()->intended($this->redirectPath());
 			return response()->json(['is_success'=>'1']);
 		}
 
-//		return redirect($this->loginPath())
-//			->withInput($request->only('email', 'remember'))
-//			->withErrors([
-//				'email' => $this->getFailedLoginMessage(),
-//			]);
-
 		return response()->json(['is_success'=>'0','error'=>$this->getFailedLoginMessage()]);
+	}
+
+	/**
+	 * ajax请求的注册
+	 *
+	 * @param \Illuminate\Http\Request $request
+	 * @return String json
+	 */
+	public function postAjaxRegister(Request $request)
+	{
+
+		$validator = $this->registrar->validator($request->all());
+
+		if ($validator->fails())
+		{
+			return response()->json(['is_success'=>'0','error'=>$validator->getMessageBag()->all()]);
+		}
+
+		$this->auth->login($this->registrar->create($request->all()));
+
+		return response()->json(['is_success'=>'1']);
 	}
 
 	protected function getFailedLoginMessage()

@@ -38,6 +38,7 @@ trait AuthenticatesAndRegistersUsers {
 	 */
 	public function postRegister(Request $request)
 	{
+
 		$validator = $this->registrar->validator($request->all());
 
 		if ($validator->fails())

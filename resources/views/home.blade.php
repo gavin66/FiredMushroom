@@ -188,13 +188,16 @@
                         <div class="form-group">
                             <input type="password" class="form-control input-lg" name="password" placeholder="密码">
                         </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control input-lg" name="password_confirmation" placeholder="确认密码">
+                        </div>
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" name="remember"> 下次自动登录
                             </label>
                             <a class="pull-right" href="">忘记密码?</a>
                         </div>
-                        <button type="button" id="login_commit" class="btn btn-primary btn-block btn-lg">登录</button>
+                        <button type="button" id="register_commit" class="btn btn-primary btn-block btn-lg">注册</button>
                         <div>
                             <p class="text-right"><span id="go-dialog-login">返回登录</span></p>
                         </div>
@@ -215,14 +218,14 @@
     <script src="{{ asset('/js/spare/messages_zh.min.js') }}"></script>
     <script type="text/javascript">
         $(function(){
-            //初始化表单验证
+            //初始化表单
             validator.init();
         });
 
-        //表单验证
+        //登录与注册表单
         var validator = function() {
             var handleSubmit = function() {
-                $('#form-login,#form-register').validate({
+                $('#form-login').validate({
                     debug:true,
                     errorElement : 'span',
                     errorClass : 'help-block',
@@ -254,34 +257,79 @@
                         element.parent('div').append(error);
                     },
                     submitHandler : function(form) {
-                        alert($(form).attr('id'));
-//                        $.post("auth/ajax-login",gApp.getFormParams($('#form-login')),function(data){
-//                            alert(data);
-//                        },"text");
-//                        form.submit();
+                        $.post("auth/ajax-login",gApp.getFormParams($('#form-login')),function(data){
+                            if(data['is_success'] == 1){
+                                window.location.href = '/home';
+                            }else if(data['is_success'] == 0){
+                                alert(data);
+                            }
+                        },"json");
                     }
                 });
 
-                $('#form-login input').keypress(function(event) {
+                $('#form-register').validate({
+                    debug:true,
+                    errorElement : 'span',
+                    errorClass : 'help-block',
+                    focusInvalid : false,
+                    rules : {
+                        email : {
+                            required : true
+                        },
+                        password : {
+                            required : true
+                        }
+                    },
+//                        messages : {
+//                            email : {
+//                                required : "Username is required."
+//                            },
+//                            password : {
+//                                required : "Password is required."
+//                            }
+//                        },
+                    highlight : function(element) {
+                        $(element).closest('.form-group').addClass('has-error');
+                    },
+                    success : function(element) {
+                        $(element).closest('.form-group').removeClass('has-error');
+                        $(element).remove();
+                    },
+                    errorPlacement : function(error, element) {
+                        element.parent('div').append(error);
+                    },
+                    submitHandler : function(form) {
+                        $.post("auth/ajax-register",gApp.getFormParams($('#form-register')),function(data){
+                            if(data['is_success'] == 1){
+                                window.location.href = '/home';
+                            }else if(data['is_success'] == 0){
+                                alert(data);
+                            }
+                        },"json");
+                    }
+                });
+
+                $('#form-login input,#form-register input').keypress(function(event) {
                     if (event.which == 13) {
-                        if ($('#form-login').validate().form()) {
-                            $('#form-login').submit();
+                        if ($(this).closest('form').validate().form()) {
+                            $(this).closest('form').submit();
                         }
                         return false;
                     }
                 });
 
-                $('#login_commit').click(function(){
-                    $('#form-login').submit();
+                $('#login_commit,#register_commit').click(function(){
+                    $(this).closest('form').submit();
                 });
 
-                $('#go-dialog-register').click(function(){
-                    $('#modal-login').modal('hide');
-                    $('#modal-register').modal('show');
-                });
-                $('#go-dialog-login').click(function(){
-                    $('#modal-register').modal('hide');
-                    $('#modal-login').modal('show');
+                $('#go-dialog-register,#go-dialog-login').click(function(){
+                    if($(this).attr('id') == 'go-dialog-register'){
+                        $('#modal-login').modal('hide');
+                        $('#modal-register').modal('show');
+                    }else if($(this).attr('id') == 'go-dialog-login'){
+                        $('#modal-register').modal('hide');
+                        $('#modal-login').modal('show');
+                    }
                 });
 
             }
@@ -292,7 +340,6 @@
             };
 
         }();
-
 
     </script>
 @stop

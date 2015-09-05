@@ -13,23 +13,7 @@
 
 Route::get('/','HomeController@index');
 Route::get('/home','HomeController@index');
-//Route::get('/home',function(){return view('home');});
-
-//Route::group(['prefix'=>'user'],function(){
-//    Route::post('loginAuth',['uses'=>'UserController@loginAuth']);
-//});
-
-//Route::get('/', 'WelcomeController@index');
-//
-//Route::get('home', 'HomeController@index');
-//
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
-
-//Route::post('auth/login','Auth\AuthController@postLogin');
-//Route::get('auth/login','Auth\AuthController@getLogin');
-
-//Route::post('auth/login',function(){return '111111';});
-//Route::get('auth/login',function(){return '111111';});
